@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test
+  template:
+    metadata:
+      labels:
+        app: test
+    spec:
+      containers:
+      - name: test
+        image: arnasbrad/studentsapi:latest  # Ensure this image is correctly tagged in your Docker registry
+        imagePullPolicy: IfNotPresent  # Only pull the image if it is not already present locally
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Development"
+        - name: ConnectionStrings__testContext
+          value: "Server=sqldata;Database=Lab2University;User Id=sa;Password=My!P@ssw0rd1;Encrypt=False"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: test
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: test

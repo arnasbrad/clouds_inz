@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coursesapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: coursesapi
+  template:
+    metadata:
+      labels:
+        app: coursesapi
+    spec:
+      containers:
+      - name: coursesapi
+        image: arnasbrad/coursesapi:latest  # Replace 'yourusername/coursesapi:latest' with your Docker image name
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Development"
+        - name: ConnectionStrings__CoursesAPIContext
+          value: "Server=sqldata;Database=CoursesAPI_1;User Id=sa;Password=My!P@ssw0rd1;Encrypt=False"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: coursesapi
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: coursesapi
