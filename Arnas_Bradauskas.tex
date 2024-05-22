@@ -2,6 +2,7 @@
 \usepackage{graphicx}
 \usepackage[T1]{fontenc} 
 \usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
 
 % Custom captions: 1 pav.
 \usepackage{caption}
@@ -119,29 +120,34 @@ Su šia komanda sukeliame pods ir services į klasterį.
 kubectl apply -f deploymentsDirectory
 \end{verbatim}
 
+Visus failus galima rasti čia: \href{https://github.com/arnasbrad/clouds_inz}{GitHub repozitorija}
+
+\clearpage
+Rezultatai:
+
 \begin{figure}[!htbp]
 	\includegraphics[width=\textwidth]{images/first/1.png}
-	\caption{\thefigure\ Vaizdas po komandos `kubectl get all` mūsų klasteryje.}
+	\caption{\thefigure\ K9s matomi services.}
 \end{figure}
 
 \begin{figure}[!htbp]
 	\includegraphics[width=\textwidth]{images/first/2.png}
-	\caption{\thefigure\ Kubernetes klasterio Overview.}
+	\caption{\thefigure\ K9s matomi pods.}
 \end{figure}
 
 \begin{figure}[!htbp]
 	\includegraphics[width=\textwidth]{images/first/3.png}
-	\caption{\thefigure\ Paleistas projektas klasteryje.}
+	\caption{\thefigure\ Pasiektas CoursesApi per ApiGateway.}
 \end{figure}
 
 \begin{figure}[!htbp]
 	\includegraphics[width=\textwidth]{images/first/4.png}
-	\caption{\thefigure\ Paleistas projektas klasteryje.}
+	\caption{\thefigure\ Pasiektas StudentsApi per ApiGateway.}
 \end{figure}
 
 \begin{figure}[!htbp]
 	\includegraphics[width=\textwidth]{images/first/5.png}
-	\caption{\thefigure\ Paleistas projektas klasteryje.}
+	\caption{\thefigure\ Naudotas klasteris (docker desktop).}
 \end{figure}
 
 \clearpage
